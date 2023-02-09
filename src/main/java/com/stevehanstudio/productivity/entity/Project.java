@@ -16,6 +16,8 @@ import lombok.*;
 
 @Getter
 @Setter
+// @RequiredArgsConstructor
+// @NoArgsConstructor
 @Entity
 @Table(name = "project")
 public class Project {

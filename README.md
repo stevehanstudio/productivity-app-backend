@@ -1,6 +1,6 @@
 # My Producivity App (Backend)
 
-This project is the backend API service for My Productivity App project.  This project is built with Maven, Java, Spring Boot and MySQL.  Visit the source repository for the frontend for a description, backstory, and user interface on this project.
+This project is the backend API service for My Productivity App project.  This project is built with Maven, Java, Spring Boot and MySQL and documented with OpenAPI v3.  Visit the source repository for the frontend for a description, backstory, and user interface on this project.
 
 <details closed>
 <summary>
@@ -103,7 +103,6 @@ TBD
 
 * [Error calling `jakarta.validation.Validation#buildDefaultValidatorFactory` (Stackoverflow)](https://stackoverflow.com/questions/74788826/error-calling-jakarta-validation-validationbuilddefaultvalidatorfactory)
 
-
 * [@RequiredArgsConstructor and @NoArgsConstructor annotation errors - Duplicate method Project() in type Project (Stackoverflow)](https://stackoverflow.com/questions/60163928/error-duplicate-method-enquiryform-in-type-enquiryform-for-allargsconstruct)
 
 * [Hibernate: "Field 'id' doesn't have a default value"](https://stackoverflow.com/questions/804514/hibernate-field-id-doesnt-have-a-default-value)
@@ -116,6 +115,7 @@ I was getting the message: `Loading class `com.mysql.jdbc.Driver'. This is depre
 * [Spring h2 database error when trying to save (Stackoverflow)](https://stackoverflow.com/questions/57502956/spring-h2-database-error-when-trying-to-save)
 I was getting the error message: `java.lang.NullPointerException: Cannot invoke "com.stevehanstudio.productivity.service.ProjectService.createProject(com.stevehanstudio.productivity.entity.Project)" because "this.projectService" is null`.  The person that posted Stackoverflow he resolved his issue by adding `@autowired` to the controller.  In my case I resolved it by adding `@AllArgsConstructor` to the service.
 
+* [Open API V2 documentation](https://springdoc.org/v2/).  Open API documentation for OpenAPI 3, Spring Boot v3 with Java 17 and Jakarta EE 9.
 
 </details>
 

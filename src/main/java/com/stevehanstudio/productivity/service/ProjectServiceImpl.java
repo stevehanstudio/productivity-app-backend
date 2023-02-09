@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.stevehanstudio.productivity.entity.Project;
+import com.stevehanstudio.productivity.entity.Task;
 import com.stevehanstudio.productivity.exception.EntityNotFoundException;
 import com.stevehanstudio.productivity.repository.ProjectRepository;
+import com.stevehanstudio.productivity.repository.TaskRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -16,6 +18,7 @@ import lombok.AllArgsConstructor;
 public class ProjectServiceImpl implements ProjectService {
 
   private ProjectRepository projectRepository;
+  private TaskRepository taskRepository;
 
   @Override
   public Project getProject(Long id) {
@@ -29,14 +32,30 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public void deleteProject(Long id) {
+  public Task saveTaskToProject(Task task, Long projectId) {
+    Optional<Project> project = projectRepository.findById(projectId);
+    task.setProject(unwrapProject(project, projectId));
+    return taskRepository.save(task);
+  }
 
+  @Override
+  public void deleteProject(Long id) {
+    projectRepository.deleteById(id);
   }
 
   @Override
   public Project renameProject(Long id, String name) {
+    Optional<Project> project = projectRepository.findById(id);
+    Project unwrappedProject = unwrapProject(project, id);
+    unwrappedProject.setName(name);
+    return projectRepository.save(unwrappedProject);
+  }
 
-    return null;
+  @Override
+  public List<Task> getAllTasksFromProject(Long projectId) {
+    // Optional<Project> project = projectRepository.findById(projectId);
+    // Project unwrappedProject = unwrapProject(project, projectId);
+    return (List<Task>)taskRepository.findByProjectId(projectId);
   }
 
   @Override
